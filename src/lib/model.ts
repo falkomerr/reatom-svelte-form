@@ -1,13 +1,19 @@
-
+import * as z from 'zod';
 import { reatomForm, type FormFieldOptions } from './reatom-form';
+
 
 export const form = reatomForm(
   {
-    title: '' as string | null,
-    name: '' as string | null,
+    text: {
+      initState: '' as string | null,
+      contract: z
+        .string()
+        .min(1, 'Text is required').parse,
+      validateOnChange: true,
+    } satisfies FormFieldOptions<string | null>
   },
   {
-    name: 'FunnelSettings.endPageForm',
+    name: 'form',
     onSubmit: async (ctx, state) => {
       console.log(state)
     },

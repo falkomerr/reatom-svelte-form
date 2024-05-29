@@ -1,5 +1,4 @@
 <script lang="ts">
-    // @ts-expect-error have @reatom/npm-svelte a types package?
     import { withSvelte } from '@reatom/npm-svelte';
     import type { FieldAtom } from './lib/reatom-form';
 
@@ -8,9 +7,10 @@
 
     const field: any = fieldAtom?.pipe(withSvelte)
 
+
     function handleInput( event: Event & { currentTarget: EventTarget & HTMLInputElement }) {
         $field = event.currentTarget.value
-    }
+    }    
 </script>
 
 <label class="label">
